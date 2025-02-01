@@ -1,11 +1,38 @@
 import {StyleSheet, View} from 'react-native';
 import Row from './Row';
+import {SudokuPuzzle} from '@/ts/Sudoku';
+import React from 'react';
 
-export default function MegaCell() {
+type MegaCellProps = {
+    puzzle: SudokuPuzzle,
+    setPuzzle: React.Dispatch<React.SetStateAction<SudokuPuzzle>>,
+    megaRowIdx: 0 | 1 | 2,
+    megaCellIdx: 0| 1 | 2,
+}
+
+export default function MegaCell(props: MegaCellProps) {
     return <View style={styles.megaCell}>
-        <Row />
-        <Row />
-        <Row />
+        <Row
+            puzzle={props.puzzle}
+            setPuzzle={props.setPuzzle}
+            megaRowIdx={props.megaRowIdx}
+            megaCellIdx={props.megaCellIdx}
+            rowIdx={0}
+        />
+        <Row
+            puzzle={props.puzzle}
+            setPuzzle={props.setPuzzle}
+            megaRowIdx={props.megaRowIdx}
+            megaCellIdx={props.megaCellIdx}
+            rowIdx={1}
+        />
+        <Row
+            puzzle={props.puzzle}
+            setPuzzle={props.setPuzzle}
+            megaRowIdx={props.megaRowIdx}
+            megaCellIdx={props.megaCellIdx}
+            rowIdx={2}
+        />
     </View>;
 }
 
